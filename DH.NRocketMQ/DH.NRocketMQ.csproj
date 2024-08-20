@@ -22,7 +22,7 @@
     <PackageId>$(AssemblyName)</PackageId>
     <Authors>$(Company)</Authors>
     <PackageProjectUrl>https://www.haocoding.com/</PackageProjectUrl>
-    <PackageIcon>leaf.png</PackageIcon>
+    <PackageIcon>DH.png</PackageIcon>
     <RepositoryUrl>https://github.com/PeiKeSmart/DH.NRocketMQ</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>湖北登灏科技有限公司;DH组件;DH;$(AssemblyName)</PackageTags>
