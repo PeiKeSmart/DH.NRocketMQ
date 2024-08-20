@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net8.0</TargetFrameworks>
+    <OutputPath>..\Bin\Test</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DH.NRocketMQ\DH.NRocketMQ.csproj" />
+  </ItemGroup>
+
+</Project>
