@@ -310,9 +310,9 @@ public abstract class ClusterClient : DisposeBase
         if (body is Packet pk)
             cmd.Payload = pk;
         else if (body is Byte[] buf)
-            cmd.Payload = buf;
+            cmd.Payload = new Packet(buf);
         else if (body != null)
-            cmd.Payload = Config.JsonHost.Write(body, false, false, false).GetBytes();
+            cmd.Payload = new Packet(Config.JsonHost.Write(body, false, false, false).GetBytes());
 
         if (extFields != null)
         {

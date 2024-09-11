@@ -1,5 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using System.Xml.Serialization;
+
 using NewLife.Collections;
 using NewLife.Data;
 using NewLife.Log;
@@ -17,7 +18,7 @@ public class Command : IAccessor, IMessage
 
     /// <summary>主体</summary>
     [XmlIgnore, IgnoreDataMember]
-    public Packet Payload { get; set; }
+    public IPacket Payload { get; set; }
     #endregion
 
     #region 扩展属性
@@ -69,7 +70,7 @@ public class Command : IAccessor, IMessage
                 //  读取主体
                 if (len > 4 + headerLen)
                 {
-                    Payload = bn.ReadBytes(len - 4 - headerLen);
+                    Payload = new Packet(bn.ReadBytes(len - 4 - headerLen));
                 }
             }
             else if (type == SerializeType.ROCKETMQ)
@@ -247,7 +248,7 @@ public class Command : IAccessor, IMessage
 
     /// <summary>命令转字节数组</summary>
     /// <returns></returns>
-    public Packet ToPacket()
+    public IPacket ToPacket()
     {
         var ms = new MemoryStream();
         Write(ms, null);
@@ -277,7 +278,7 @@ public class Command : IAccessor, IMessage
         return cmd;
     }
 
-    Boolean IMessage.Read(Packet pk) => Read(pk.GetStream());
+    Boolean IMessage.Read(IPacket pk) => Read(pk.GetStream());
     #endregion
 
     #region 辅助
