@@ -315,5 +315,13 @@ public class Command : IAccessor, IMessage
 
         return sb.Put(true);
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void Dispose()
+    {
+
+    }
     #endregion
 }
