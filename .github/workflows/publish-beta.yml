@@ -2,7 +2,7 @@ name: publish-beta
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master,dev ]
     paths:
         - 'DH.NRocketMQ/**'
   workflow_dispatch:
