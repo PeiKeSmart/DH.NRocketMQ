@@ -960,7 +960,7 @@ public class Consumer : MqBase
 
         var rs = cmd.CreateReply() as Command;
         rs.Header.Language = "DOTNET";
-        rs.Payload = new Packet(sb.ToString().GetBytes());
+        rs.Payload = (ArrayPacket)sb.ToString().GetBytes();
 
         return rs;
     }

@@ -51,7 +51,7 @@ public class Message
     public void SetBody(Object body)
     {
         _BodyString = null;
-        if (body is Packet pk)
+        if (body is IPacket pk)
             Body = pk.ReadBytes();
         else if (body is Byte[] buf)
             Body = buf;

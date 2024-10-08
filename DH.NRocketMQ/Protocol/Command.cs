@@ -1,6 +1,5 @@
 ﻿using System.Runtime.Serialization;
 using System.Xml.Serialization;
-
 using NewLife.Collections;
 using NewLife.Data;
 using NewLife.Log;
@@ -30,6 +29,13 @@ public class Command : IAccessor, IMessage
 
     /// <summary>是否异常</summary>
     Boolean IMessage.Error { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    #endregion
+
+    #region 构造
+
+    /// <summary>销毁。回收内存</summary>
+    public void Dispose() => Payload.TryDispose();
+
     #endregion
 
     #region 读写
@@ -70,7 +76,7 @@ public class Command : IAccessor, IMessage
                 //  读取主体
                 if (len > 4 + headerLen)
                 {
-                    Payload = new Packet(bn.ReadBytes(len - 4 - headerLen));
+                    Payload = (ArrayPacket)bn.ReadBytes(len - 4 - headerLen);
                 }
             }
             else if (type == SerializeType.ROCKETMQ)
@@ -314,14 +320,6 @@ public class Command : IAccessor, IMessage
         }
 
         return sb.Put(true);
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public void Dispose()
-    {
-
     }
     #endregion
 }
